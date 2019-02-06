@@ -1,0 +1,16 @@
+# Ignore everything in this directory
+*~
+*.diff
+*#
+.classpath
+.eclipse
+.project
+.settings
+target
+*.idea
+*.iml
+.DB_Store
+!.gitignore
+common/pom.xml.releaseBackup
+kvstore/kvstore-jedis/pom.xml.releaseBackup
+kvstore/pom.xml.releaseBackup
