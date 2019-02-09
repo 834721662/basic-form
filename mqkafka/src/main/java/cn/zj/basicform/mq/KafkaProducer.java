@@ -1,5 +1,6 @@
 package cn.zj.basicform.mq;
 
+import com.zj.basicform.common.property.PropertiesLoader;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
