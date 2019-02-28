@@ -11,6 +11,7 @@
     <modules>
         <module>mqkafka</module>
         <module>common</module>
+        <module>netty</module>
     </modules>
 
 
