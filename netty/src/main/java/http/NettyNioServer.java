@@ -133,7 +133,9 @@ public abstract class NettyNioServer implements Server {
      *
      * @param serverBootstrap
      */
-    public abstract void option(ServerBootstrap serverBootstrap);
+    public void option(ServerBootstrap serverBootstrap) {
+
+    }
 
     /**
      * 子类添加handler入口

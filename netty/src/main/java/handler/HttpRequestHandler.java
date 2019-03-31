@@ -1,10 +1,9 @@
 package handler;
 
+import http.HttpResponseWriter;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.http.DefaultFullHttpResponse;
-import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.handler.codec.http.HttpMethod;
+import io.netty.handler.codec.http.*;
 
 import java.util.List;
 
@@ -40,6 +39,15 @@ public abstract class HttpRequestHandler {
      */
     protected abstract DefaultFullHttpResponse handle(ChannelHandlerContext ctx, FullHttpRequest request);
 
+    protected void invokeHandle(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+        DefaultFullHttpResponse response = handle(ctx, request);
+        boolean isKeepAlive = HttpHeaders.isKeepAlive(request);
+        // http 1.0版本 默认false
+        if (HttpVersion.HTTP_1_0.equals(response.getProtocolVersion())) {
+            isKeepAlive = false;
+        }
+        HttpResponseWriter.writeResponse(ctx, response.getStatus(), response.getProtocolVersion(),  isKeepAlive, response.content());
+    }
 
     public String getUri() {
         return uri;

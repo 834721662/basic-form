@@ -65,7 +65,6 @@ public class HttpNettyNioServer implements Server {
         if (isRunning.compareAndSet(false, true)) {
             Map<String, HttpRequestHandler> requestHandlerMap = Maps.newHashMap();
             HashMultimap<String, HttpMethod> urlMethodMap = HashMultimap.create();
-            //// TODO: 5/17/17 config
             urlMethodMap.putAll(HttpConstants.URI_VERSION, Lists.newArrayList(HttpMethod.POST, HttpMethod.GET));
             urlMethodMap.putAll(HttpConstants.URI_HEALTH_STATUS_GET, Lists.newArrayList(HttpMethod.POST, HttpMethod.GET, HttpMethod.HEAD));
             urlMethodMap.putAll(HttpConstants.URI_HEALTH_STATUS_SET, Lists.newArrayList(HttpMethod.POST, HttpMethod.GET, HttpMethod.HEAD));
